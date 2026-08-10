@@ -1,4 +1,3 @@
-````markdown
 # 🎬 Movie Explorer & Review Management System
 
 <p align="center">
@@ -43,7 +42,7 @@ The Streamlit interface provides a simple dashboard for interacting with the mov
 |---|---|
 | 🏠 Home | Project dashboard and overview |
 | 🎬 View Movies | Display all available movies |
-| 👁️ View Movie | Retrieve a movie using its ID |
+| 👁️ View a single Movie | Retrieve a movie using its ID |
 | 🔎 Search Movies | Filter movies using query parameters |
 | ➕ Add Movie | Add a new movie |
 | ✏️ Update Movie | Update an existing movie |
@@ -127,7 +126,7 @@ movie_project/
 ├── frontend/
 │   ├── app.py
 │   └── images/
-│       └── bgbg.jpeg
+│       └── gh.jpeg
 │
 ├── .gitignore
 ├── requirements.txt
@@ -624,27 +623,3 @@ GitHub 🐙
 Feel free to explore the source code and follow the development journey.
 
 **Built with Python. Built to learn. Built to improve.** 🎬
-
-````
-
-### One thing I'd do before committing this README
-
-Your repository currently has a real GitHub URL, so the README can link directly to it. I'd also add a **real screenshot/GIF of your Streamlit interface** near the `Application Preview` section. That will make the GitHub repository dramatically more attractive than a text-only README.
-
-For example:
-
-```text
-README
-   ↓
-🎬 Project screenshot
-   ↓
-Architecture
-   ↓
-Features
-   ↓
-API endpoints
-   ↓
-Setup
-   ↓
-GitHub
-````
