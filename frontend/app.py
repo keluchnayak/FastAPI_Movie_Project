@@ -86,7 +86,8 @@ menu = st.sidebar.selectbox(
     "Navigation",
     [
         "🏠 Home",
-        "🎬 View Movies",
+        "🎬 View all Movies",
+        "🎬 View a single Movie",
         "🔍 Search Movies",
         "➕ Add Movie",
         "✏️ Update Movie",
@@ -161,7 +162,7 @@ JSON Response → Frontend Display
 
         st.error("Unable to connect to the FastAPI backend.")
 
-elif menu == "🎬 View Movies":
+elif menu == "🎬 View all Movies":
 
     st.header("🎬 Movie Collection")
 
@@ -206,6 +207,69 @@ border-left:6px solid #E50914;
     else:
 
         st.error("Failed to fetch movies.")
+
+elif menu == "🎬 View a single Movie":
+
+    st.header("🎬 View a single Movie")
+
+    movie_id = st.number_input(
+        "Enter Movie ID",
+        min_value=1,
+        step=1
+    )
+
+    if st.button("🔍 Find Movie"):
+
+        response = requests.get(
+            f"{BASE_URL}/movies/{movie_id}"
+        )
+
+        if response.status_code == 200:
+
+            movie = response.json()
+
+            if "message" in movie:
+                st.warning("⚠️ Movie not found.")
+            else:
+                st.success("Movie found!")
+
+                st.markdown(
+                    f"""
+                    <div style="
+                        padding:20px;
+                        border-radius:15px;
+                        background:rgba(31,41,55,0.90);
+                        border:1px solid #374151;
+                        margin-top:15px;
+                    ">
+
+                    <h2 style="color:#FFD700;">
+                        🎬 {movie["movie_name"]}
+                    </h2>
+
+                    <p style="color:white;font-size:16px;">
+                        <b>🆔 ID:</b> {movie["id"]}
+                    </p>
+
+                    <p style="color:white;font-size:16px;">
+                        <b>🎭 Genre:</b> {movie["genre"]}
+                    </p>
+
+                    <p style="color:white;font-size:16px;">
+                        <b>🌍 Language:</b> {movie["language"]}
+                    </p>
+
+                    <p style="color:white;font-size:16px;">
+                        <b>⭐ Rating:</b> {movie["rating"]}/10
+                    </p>
+
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+
+        else:
+            st.error("❌ Failed to fetch movie.")
 
 elif menu == "🔍 Search Movies":
 
