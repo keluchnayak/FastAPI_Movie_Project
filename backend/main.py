@@ -1,9 +1,7 @@
 from fastapi import FastAPI, Query, Body
 
-# Create FastAPI application
 app = FastAPI()
 
-# In-memory movie list
 movies = [
     {
         "id": 1,
