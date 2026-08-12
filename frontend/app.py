@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import base64
+import os
 
 def get_base64(image_path):
 
@@ -15,7 +16,10 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-BASE_URL = "http://127.0.0.1:8000"
+BASE_URL =  os.getenv(
+    "BASE_URL",
+    "http://127.0.0.1:8000"
+)
 
 background = get_base64("images/gh.jpeg")
 st.markdown(f"""
