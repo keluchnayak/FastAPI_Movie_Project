@@ -20,8 +20,13 @@ BASE_URL =  os.getenv(
     "BASE_URL",
     "http://127.0.0.1:8000"
 )
-
-background = get_base64("images/gh.jpeg")
+background = get_base64(
+    os.path.join(
+        os.path.dirname(__file__),
+        "images",
+        "gh.jpeg"
+    )
+)
 st.markdown(f"""
 <style>
 
